@@ -1,6 +1,13 @@
 # FAQ
 
+## UNANSWERED QUESTIONS - please help to anwser!
+
+Q: How do I use `crontab` on QHub to regularly execute notebooks?
+
+
+## ANSWERED QUESTIONS:
 ## Q: How do I retrieve my user data from the EFS Share before I destroy my qhub on AWS?
+Answered by: @jkellndorfer
 
 We want to backup our user data from the EFS persistent volume associated with our qhub before we destroy it. Here is a possible avenue:
 
@@ -25,6 +32,7 @@ We want to backup our user data from the EFS persistent volume associated with o
 
 
 ## Q: How do I destroy my qhub deployment on AWS?
+Answered by: @jkellndorfer
 
 On your local qhub repo:
 
@@ -37,6 +45,7 @@ Login to your AWS console and look for everything related to the eks, loadbalanc
 
 
 ## Q: How do I use `nbconvert --execute` on qhub from commandline?
+Answered by: @jkellndorfer
 
 Assume the notebook `my-notebook.ipynb` uses the environment `myenv`.
 
