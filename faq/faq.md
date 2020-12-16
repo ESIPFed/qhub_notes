@@ -26,7 +26,7 @@ We want to backup our user data from the EFS persistent volume associated with o
      
 6. Assume you mounted the EFS share on mountpoint /mnt/efs
         
-        aws s3 cp --recursive /mnt/efs/home s3://<my-backup-bucket>/<my-backup-Prefix>
+        aws s3 cp --profile efs_backup --recursive /mnt/efs/home s3://<my-backup-bucket>/<my-backup-Prefix>
         
 7. Terminate your ec2 AWS Linux instance.
 
