@@ -46,7 +46,7 @@ If `terraform destroy` does not complete and stops with an `unauthorized` error,
 
       terraform state rm <module>
 
-and the try `terraform destroy` again.
+and the try `terraform destroy` again. Repeat that process possibly with other modules where the destroy process fails.
 
 Final step: Login to your AWS console and look for everything related to the eks, loadbalancer, database tables, autoscaling groups, node groups, efs, volumnes, iam, etc. that may still be left and remove. (More details forthcoming!)
 
