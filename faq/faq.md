@@ -41,7 +41,14 @@ On your local qhub repo:
       cd infrastructure
       terraform destroy
       
-Login to your AWS console and look for everything related to the eks, loadbalancer, database tables, autoscaling groups, node groups, efs, volumnes, iam, etc. that may still be left and remove. (More details forthcoming!)
+
+If `terraform destroy` does not complete and stops with an `unauthorized` error, try running it a second or several more times until you are stuck at the same `module`. Then try to manually remote the "offending" module with
+
+      terraform state rm <module>
+
+and the try `terraform destroy` again.
+
+Final step: Login to your AWS console and look for everything related to the eks, loadbalancer, database tables, autoscaling groups, node groups, efs, volumnes, iam, etc. that may still be left and remove. (More details forthcoming!)
 
 
 ## Q: How do I use `nbconvert --execute` on qhub from commandline?
