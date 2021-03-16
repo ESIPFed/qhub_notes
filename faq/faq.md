@@ -73,7 +73,8 @@ Interestingly, the kernel name is "python3", but contains,  ...-myenv/share ...,
       
 You should get a `my-notebook.html` file that was executed with the myenv kernel. 
 
-#### Backing up user data
+## Q How do I back up my user data using tar?
+
 1. Create the pod.yaml for a ubuntu pod to back up from
 
         kind: Pod
@@ -103,3 +104,9 @@ You should get a `my-notebook.html` file that was executed with the myenv kernel
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         unzip awscliv2.zip
         ./aws/install
+        aws configure
+6. run the tar command
+        cd /data
+        tar cvf 2021-03-home.tar home
+8. transfer to s3
+        aws s3 cp 2021-03-16-home.tar  s3://esip-qhub/backups/
