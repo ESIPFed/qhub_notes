@@ -102,7 +102,7 @@ You should get a `my-notebook.html` file that was executed with the myenv kernel
 5. install software needed for backup and transfer to S3
  
         apt update
-        apt install vim curl zip unzip pigz
+        apt install vim curl zip unzip
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         unzip awscliv2.zip
         ./aws/install
