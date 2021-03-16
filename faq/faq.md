@@ -96,9 +96,11 @@ You should get a `my-notebook.html` file that was executed with the myenv kernel
                   name: volume-to-debug-ubuntu
    
 2. deploy the pod
+
         kubectl apply -f pod.yaml -n dev
 4. login to pod using k9s: Use arrow keys to highlight pod, then click "s".  You will be root.
 5. install software needed for backup and transfer to S3
+ 
         apt update
         apt install vim curl zip unzip pigz
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -106,7 +108,9 @@ You should get a `my-notebook.html` file that was executed with the myenv kernel
         ./aws/install
         aws configure
 6. run the tar command
+
         cd /data
         tar cvf 2021-03-home.tar home
 8. transfer to s3
+        
         aws s3 cp 2021-03-16-home.tar  s3://esip-qhub/backups/
