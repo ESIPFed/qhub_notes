@@ -72,3 +72,34 @@ Interestingly, the kernel name is "python3", but contains,  ...-myenv/share ...,
         jupyter nbconvert --ExecutePreprocessor.kernel_name=python3 --execute --to html my-notebook.ipynb
       
 You should get a `my-notebook.html` file that was executed with the myenv kernel. 
+
+#### Backing up user data
+1. Create the pod.yaml for a ubuntu pod to back up from
+
+        kind: Pod
+        apiVersion: v1
+        metadata:
+          name: volume-debugger-ubuntu
+          namespace: dev
+        spec:
+          volumes:
+            - name: volume-to-debug-ubuntu
+              persistentVolumeClaim:
+               claimName: nfs-mount-dev-share
+          containers:
+            - name: debugger
+              image: ubuntu
+              command: ['sleep', '36000']
+              volumeMounts:
+                - mountPath: "/data"
+                  name: volume-to-debug-ubuntu
+   
+2. deploy the pod
+        kubectl apply -f pod.yaml -n dev
+4. login to pod using k9s: Use arrow keys to highlight pod, then click "s".  You will be root.
+5. install software needed for backup and transfer to S3
+        apt update
+        apt install vim curl zip unzip pigz
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        unzip awscliv2.zip
+        ./aws/install
