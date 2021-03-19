@@ -6,13 +6,17 @@ Q: How do I use `crontab` on QHub to regularly execute notebooks?
 
 
 ## ANSWERED QUESTIONS:
-### Q: On k9s, I see "evicted pods" in red.  What do I do?
+#### Q: On k9s, I see "evicted pods" in red.  What do I do?
 Answered by: @rsignell-usgs
 You can clean up failed pods (like evicted pods) by doing:
 ```
 kubectl -n dev delete pods --field-selector=status.phase=Failed
 ```
-## Q: How do I retrieve my user data from the EFS Share before I destroy my qhub on AWS?
+#### Q: I can't start a cluster! 
+Answered by: @rsignell-usgs
+* In k9s, try killing the `gateway-dask-gateway` pod (it will regenerate)
+
+#### Q: How do I retrieve my user data from the EFS Share before I destroy my qhub on AWS?
 Answered by: @jkellndorfer
 
 We want to backup our user data from the EFS persistent volume associated with our qhub before we destroy it. Here is a possible avenue:
@@ -37,7 +41,7 @@ We want to backup our user data from the EFS persistent volume associated with o
 7. Terminate your ec2 AWS Linux instance.
 
 
-## Q: How do I destroy my qhub deployment on AWS?
+#### Q: How do I destroy my qhub deployment on AWS?
 Answered by: @jkellndorfer
 
 On your local qhub repo:
@@ -57,7 +61,7 @@ and the try `terraform destroy` again. Repeat that process possibly with other m
 Final step: Login to your AWS console and look for everything related to the eks, loadbalancer, database tables, autoscaling groups, node groups, efs, volumnes, iam, etc. that may still be left and remove. (More details forthcoming!)
 
 
-## Q: How do I use `nbconvert --execute` on qhub from commandline?
+#### Q: How do I use `nbconvert --execute` on qhub from commandline?
 Answered by: @jkellndorfer
 
 Assume the notebook `my-notebook.ipynb` uses the environment `myenv`.
@@ -79,7 +83,7 @@ Interestingly, the kernel name is "python3", but contains,  ...-myenv/share ...,
       
 You should get a `my-notebook.html` file that was executed with the myenv kernel. 
 
-## Q How do I back up my user data using tar?
+#### Q How do I back up my user data using tar?
 
 1. Create the pod.yaml for a ubuntu pod to back up from
 
