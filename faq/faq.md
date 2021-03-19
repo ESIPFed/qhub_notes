@@ -6,6 +6,12 @@ Q: How do I use `crontab` on QHub to regularly execute notebooks?
 
 
 ## ANSWERED QUESTIONS:
+### Q: On k9s, I see "evicted pods" in red.  What do I do?
+Answered by: @rsignell-usgs
+You can clean up failed pods (like evicted pods) by doing:
+```
+kubectl -n dev delete pods --field-selector=status.phase=Failed
+```
 ## Q: How do I retrieve my user data from the EFS Share before I destroy my qhub on AWS?
 Answered by: @jkellndorfer
 
